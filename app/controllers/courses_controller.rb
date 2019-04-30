@@ -1,8 +1,57 @@
 class CoursesController < ApplicationController
-<<<<<<< HEAD
   def index
     @courses = Course.all
   end
-=======
->>>>>>> 3e3a21ef26c26a6e00045be75b25c69a27e46bda
+
+  def new
+    @course = Course.new
+  end
+
+  def create
+    @course = Course.new(course_params)
+
+    respond_to do |format|
+      if @course.save
+        format.html {redirect_to courses_path, notice: 'Your course has been created.'}
+      else
+        format.html {render :new}
+      end
+    end
+  end
+
+  def edit
+    @course = Course.find(params[:id])
+  end
+
+  def update
+    @course = Course.find(params[:id])
+
+    respond_to do |format|
+      if @course.update(course_params)
+        format.html {redirect_to courses_path, notice: 'Your course has been updated.'}
+      else
+        format.html {render :edit}
+      end
+    end
+  end
+
+  def show
+    @course = Course.find(params[:id])
+    @page_title = @course.name
+  end
+
+  def destroy
+    @course = Course.find(params[:id])
+
+    @course.destroy
+    respond_to do |format|
+      format.html {redirect_to courses_url, notice: "Course was removed."}
+    end
+  end
+
+  private
+
+  def course_params
+    params.require(:course).permit(:code, :name, :instructor, :period1, :period2, :venue)
+  end
 end
