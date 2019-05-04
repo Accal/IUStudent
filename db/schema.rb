@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2019_04_25_161913) do
     t.string "instructor"
     t.string "period1"
     t.string "period2"
+    t.time "period1"
+    t.time "period2"
     t.string "venue"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

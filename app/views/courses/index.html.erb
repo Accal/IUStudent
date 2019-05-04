@@ -22,3 +22,9 @@
     <%= submit_tag "Import CSV" %>
   <% end %>
 </div>
+<p><%=course.period1.strftime("%H:%M")%></p>
+<p><%=course.period2.strftime("%H:%M")%></p>
+<p><%=course.venue%></p>
+<%= link_to  "Edit", edit_course_path(course)%>
+<%= link_to  "Delete", course_path(course), method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
