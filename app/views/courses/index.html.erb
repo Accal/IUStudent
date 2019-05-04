@@ -2,6 +2,12 @@
 
 <p><%= link_to  "Create new course", new_course_path %> </p>
 
+<%= form_tag(courses_path, method: :get) do %>
+  <%= text_field_tag :search, params[:search]%>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+
 <% @courses.each do |course| %>
 <p><%=course.code%></p>
 <p><%= link_to course.name, course_path(course)%></p>
@@ -19,6 +25,6 @@
 <h3>Import a CSV File</h3>
   <%= form_tag import_courses_path, multipart: true do %>
     <%= file_field_tag :file %>
-    <%= submit_tag "Import CSV" %>
+    <%= submit_tag "Import CSV", name: nil %>
   <% end %>
 </div>

@@ -7,6 +7,14 @@ class Course < ApplicationRecord
       course_hash = row.to_hash
 
       Course.create!(course_hash)
-    end 
+    end
+  end
+
+  def self.search(term)
+    if term
+      where('lower(name) LIKE ?', "%#{term.downcase}%").or(where('lower(code) LIKE ?', "%#{term.downcase}%"))
+    else
+      all
+    end
   end
 end

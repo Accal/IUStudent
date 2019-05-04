@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   def index
-    @courses = Course.all
+    @courses = Course.search(params[:search])
   end
 
   def new
@@ -57,6 +57,6 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:code, :name, :instructor, :period1, :period2, :venue)
+    params.require(:course).permit(:code, :name, :instructor, :period1, :period2, :venue, :search)
   end
 end
