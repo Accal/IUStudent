@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
   root to: 'courses#index'
 
-  resources :courses do
-    collection {post :import}
-  end
-  
   devise_for :admins
   devise_for :professors
   devise_for :students
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :courses do
+    collection {post :import}
+  end
+
+  resources :students, :only => [:add_course] do
+    member do
+      post 'add_course'
+    end
+  end
 end

@@ -53,7 +53,7 @@ class CoursesController < ApplicationController
     Course.import(params[:file])
     redirect_to root_url, notice: "Courses imported."
   end
-  
+
   private
 
   def course_params

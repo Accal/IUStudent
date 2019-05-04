@@ -5,4 +5,8 @@ class Student < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def add_course(course_code)
+    courses << Course.find_by(code: course_code)
+  end
 end
