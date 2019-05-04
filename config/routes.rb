@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  root to: 'courses#index'
+
+  resources :courses do
+    collection {post :import}
+  end
   resources :courses
   devise_for :admins
   devise_for :professors

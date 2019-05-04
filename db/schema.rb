@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 2019_04_25_161913) do
     t.string "code"
     t.string "name"
     t.string "instructor"
+    t.string "period1"
+    t.string "period2"
     t.time "period1"
     t.time "period2"
     t.string "venue"
