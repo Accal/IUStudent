@@ -1,0 +1,38 @@
+<h1>Create a new course</h1>
+
+
+<%= form_for(@course) do |f| %>
+  <div class="field">
+    <%= f.label :code %>
+    <%= f.text_field :code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :instructor %>
+    <%= f.text_field :instructor %>
+  </div>
+
+  <div class="field">
+    <%= f.label :period_1 %>
+    <%= f.text_field :period1, :ignore_date => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :period_2 %>
+    <%= f.text_field :period2, :ignore_date => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :venue %>
+    <%= f.text_field :venue %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<h1>Courses</h1>
+
+<p><%= link_to  "Create new course", new_course_path %> </p>
+
+<% @courses.each do |course| %>
+<p><%=course.code%></p>
+<p><%= link_to course.name, course_path(course)%></p>
+<p><%=course.instructor%></p>
+<p><%=course.period1 unless course.period1.nil? %></p>
+<p><%=course.period2 unless course.period2.nil?%></p>
+<p><%=course.venue%></p>
+<%= link_to  "Edit", edit_course_path(course)%>
+<%= link_to  "Delete", course_path(course), method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
+
+<hr>
+
+<div>
+<h3>Import a CSV File</h3>
+  <%= form_tag import_courses_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import CSV" %>
+  <% end %>
+</div>
