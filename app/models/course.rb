@@ -1,5 +1,6 @@
 class Course < ApplicationRecord
   require 'csv'
+  has_and_belongs_to_many :students
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
