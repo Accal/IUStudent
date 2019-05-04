@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resources :courses do
     collection {post :import}
   end
+<<<<<<< HEAD
 
+=======
+  resources :courses
+>>>>>>> 7b69127a83aed6e5e622cd4f9f86c14f81204aa9
   devise_for :admins
   devise_for :professors
   devise_for :students
