@@ -17,6 +17,7 @@
   <p><%=course.venue%></p>
   <%= link_to  "Edit", edit_course_path(course)%>
   <%= link_to  "Delete", course_path(course), method: :delete, data: {confirm: "Are you sure?"} %>
+
   <%= link_to  "Add Course", add_course_student_path(current_student, course_code: "#{course.code}"), method: :post if student_signed_in? %>
 <% end %>
 

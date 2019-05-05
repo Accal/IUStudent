@@ -5,10 +5,12 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
+    authorize @course
   end
 
   def create
     @course = Course.new(course_params)
+    authorize @course
 
     respond_to do |format|
       if @course.save
@@ -21,10 +23,12 @@ class CoursesController < ApplicationController
 
   def edit
     @course = Course.find(params[:id])
+    authorize @course
   end
 
   def update
     @course = Course.find(params[:id])
+    authorize @course
 
     respond_to do |format|
       if @course.update(course_params)
@@ -42,6 +46,7 @@ class CoursesController < ApplicationController
 
   def destroy
     @course = Course.find(params[:id])
+    authorize @course
 
     @course.destroy
     respond_to do |format|
@@ -50,6 +55,7 @@ class CoursesController < ApplicationController
   end
 
   def import
+    authorize Course
     Course.import(params[:file])
     redirect_to root_url, notice: "Courses imported."
   end

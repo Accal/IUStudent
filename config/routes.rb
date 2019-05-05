@@ -9,10 +9,16 @@ Rails.application.routes.draw do
     collection {post :import}
   end
 
-  resources :students, :only => [:add_course, :remove_course, :show] do
+  resources :students, :only => [:add_course, :remove_course] do
     member do
       post 'add_course'
       delete 'remove_course'
     end
   end
+
+  get 'students/profile/(:id)', to: 'students#show', as: 'profile'
+
+  get 'home', to: 'static_pages#home'
+  get 'about', to: 'static_pages#about'
+  get 'map', to: 'static_pages#map'
 end
