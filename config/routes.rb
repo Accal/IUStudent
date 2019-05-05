@@ -9,9 +9,10 @@ Rails.application.routes.draw do
     collection {post :import}
   end
 
-  resources :students, :only => [:add_course] do
+  resources :students, :only => [:add_course, :remove_course, :show] do
     member do
       post 'add_course'
+      delete 'remove_course'
     end
   end
 end

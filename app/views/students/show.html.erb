@@ -1,0 +1,12 @@
+<%= @student.name %>
+
+<% @student.courses.each do |course| %>
+  <hr>
+  <p><%=course.code%></p>
+  <p><%= link_to course.name, course_path(course)%></p>
+  <p><%=course.instructor%></p>
+  <p><%=course.period1 unless course.period1.nil? %></p>
+  <p><%=course.period2 unless course.period2.nil?%></p>
+  <p><%=course.venue%></p>
+  <%= link_to  "Remove Course", remove_course_student_path(current_student, course_code: "#{course.code}"), method: :delete if student_signed_in? %>
+<% end %>

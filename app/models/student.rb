@@ -9,4 +9,8 @@ class Student < ApplicationRecord
   def add_course(course_code)
     courses << Course.find_by(code: course_code)
   end
+
+  def remove_course(course_code)
+    courses.delete(Course.find_by(code: course_code))
+  end
 end
