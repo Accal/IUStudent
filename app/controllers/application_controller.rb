@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   def pundit_user
     if !current_admin.nil?
       current_admin
+    elsif !current_professor.nil?
+      current_professor
     elsif !current_student.nil?
       current_student
     else

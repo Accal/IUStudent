@@ -9,7 +9,7 @@ class StudentsController < ApplicationController
   def remove_course
     @student = current_student
     @student.remove_course(params[:course_code])
-    redirect_to profile_url, notice: "Course Removed."
+    redirect_to student_profile_url, notice: "Course Removed."
     authorize @student
   end
 
@@ -42,6 +42,7 @@ class StudentsController < ApplicationController
       array_of_times.push(course.time2_end)
       @formatted_courses.push(array_of_times)
     end
+    authorize @student
   end
 
   private

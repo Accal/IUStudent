@@ -19,6 +19,8 @@
   <%= link_to  "Delete", course_path(course), method: :delete, data: {confirm: "Are you sure?"} %>
 
   <%= link_to  "Add Course", add_course_student_path(current_student, course_code: "#{course.code}"), method: :post if student_signed_in? %>
+  <%= link_to  "Teach Course", add_course_professor_path(current_professor, course_code: "#{course.code}"), method: :post if professor_signed_in? %>
+
 <% end %>
 
 <hr>

@@ -1,0 +1,22 @@
+<h1>Professors</h1>
+
+<% @professors.each do |professor| %>
+  <p><%= link_to professor.name, professor_profile_path(professor)%></p>
+  <p><%=professor.faculty%></p>
+  <p><%=professor.position%></p>
+  <p><%=professor.office%></p>
+  <p><%=professor.phoneNumber%></p>
+<% end %>
+
+<hr>
+
+<div>
+
+<!--
+<h3>Import a CSV File</h3>
+  <%= form_tag import_courses_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import CSV", name: nil %>
+  <% end %>
+</div>
+ -->

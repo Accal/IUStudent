@@ -1,6 +1,7 @@
 class Course < ApplicationRecord
   require 'csv'
-  has_and_belongs_to_many :studentsmethod_name
+  has_and_belongs_to_many :students
+  has_and_belongs_to_many :professors
 
   def day1
     unless self.period1.nil?
@@ -56,7 +57,6 @@ class Course < ApplicationRecord
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-
       course_hash = row.to_hash
 
       Course.create!(course_hash)

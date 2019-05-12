@@ -10,16 +10,17 @@ class StudentPolicy < ApplicationPolicy
     user.is_a?(Admin) or owned_by_current_user?
   end
 
+  def calendar?
+    user.is_a?(Admin) or owned_by_current_user?
+  end
 
   def add_course?
     user.is_a?(Admin) or owned_by_current_user?
   end
 
-
   def remove_course?
     user.is_a?(Admin) or owned_by_current_user?
   end
-
 
   private 
 

@@ -13,21 +13,22 @@
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    
-    <%= yield %>
 
-    <hr>
     <%if pundit_user.is_a?(GuestUser) %>
       <%=(link_to  "Register", new_student_registration_path) +
       "<br>".html_safe +
       (link_to  "Login", new_student_session_path) %>
     <% else %>
       <%= link_to  "Student Logout", destroy_student_session_path, method: :delete if current_student%>
+      <%= link_to  "Professor Logout", destroy_professor_session_path, method: :delete if current_professor%>
       <%= link_to  "Admin Logout", destroy_admin_session_path, method: :delete if current_admin%>
     <% end %>
 
     <%=current_admin.name if current_admin%>
     <%=current_student.name if current_student%>
 
+    <hr>
+    
+    <%= yield %>
   </body>
 </html>
