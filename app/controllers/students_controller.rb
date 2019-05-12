@@ -22,6 +22,28 @@ class StudentsController < ApplicationController
     authorize @student
   end
 
+  def calendar
+    if params[:id]
+      @student = Student.find(params[:id])
+    else
+      @student = current_student
+    end
+
+    @formatted_courses = Array.new
+    @student.courses.each do |course|
+      array_of_times = Array.new
+      array_of_times.push(course.name)
+      array_of_times.push(course.day1)
+      array_of_times.push(course.time1_start)
+      array_of_times.push(course.time1_end)
+
+      array_of_times.push(course.day2)
+      array_of_times.push(course.time2_start)
+      array_of_times.push(course.time2_end)
+      @formatted_courses.push(array_of_times)
+    end
+  end
+
   private
 
   def student_params

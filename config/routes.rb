@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   get 'students/profile/(:id)', to: 'students#show', as: 'profile'
+  get 'students/calendar/(:id)', to: 'students#calendar', as: 'calendar'
 
   get 'home', to: 'static_pages#home'
   get 'about', to: 'static_pages#about'
