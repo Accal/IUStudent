@@ -4,16 +4,50 @@
     <title>IUStudent</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark ">
+      <div class="container">
+        <a class="navbar-brand" href="#">IUStudent</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navCollapse">
+          <ul class="navbar-nav ml-auto">
+
+            <li class="nav-link">
+              <%= link_to 'Home', root_url, class: "nav-link"%>
+            </li>
+          
+            <%if pundit_user.is_a?(GuestUser) %>
+              <li class="nav-link">
+                <%= link_to  "Register", register_path, class: 'nav-link' %>
+              </li>
+              <li class='nav-link'>
+                <%= link_to  "Login", login_path, class: 'nav-link' %>
+              </li>
+            <% end %>
+
+            <li class="nav-link">
+              <%= link_to 'About', about_path, class: "nav-link" %>
+            </li>
+            <li class="nav-link">
+              <%= link_to 'Map', map_path, class: "nav-link" %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
+    <!--
     <%if pundit_user.is_a?(GuestUser) %>
       <%=(link_to  "Register", new_student_registration_path) +
       "<br>".html_safe +
@@ -23,12 +57,9 @@
       <%= link_to  "Professor Logout", destroy_professor_session_path, method: :delete if current_professor%>
       <%= link_to  "Admin Logout", destroy_admin_session_path, method: :delete if current_admin%>
     <% end %>
-
     <%=current_admin.name if current_admin%>
     <%=current_student.name if current_student%>
-
-    <hr>
-    
+    -->
     <%= yield %>
   </body>
 </html>

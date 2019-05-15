@@ -53,47 +53,6 @@
           row = rows.eq(row.rowIndex + 1).get(0);
         }
       }
-  
-  
-      /*
-      // Working Code
-      // Fill in first period
-      if (start_time1 != ""){
-        row = document.getElementById(start_time1);
-  
-        if (row.cells[day_index(day1)].innerHTML != ""){
-            alert("You have a clash ");
-            break;
-        } else {
-        row.cells[day_index(day1)].innerHTML = course_name;
-        }
-  
-        while (current_id != end_time1){
-          row = rows.eq(row.rowIndex + 1).get(0);
-          current_id = row.id;
-  
-          if (row.cells[day_index(day1)].innerHTML != ""){
-            alert("You have a clash ");
-            break;
-          } else {
-            row.cells[day_index(day1)].innerHTML = course_name;
-          }
-        }
-      }
-  
-      // Fill in second period
-      if (start_time2 != ""){
-        row = document.getElementById(start_time2);
-        row.cells[day_index(day2)].innerHTML = course_name;
-  
-        while (current_id != end_time2){
-          row = rows.eq(row.rowIndex + 1).get(0);
-          current_id = row.id;
-          row.cells[day_index(day2)].innerHTML = course_name;
-        }
-      }
-  
-      */
     }
   
     MergeCommonRows(table);
@@ -129,9 +88,8 @@
       $('td.hidden').remove();
   }
 </script>
-
 <div class="table-responsive-sm o">
-  <table id="calendar", class="table table-bordered text-center table-sm">
+  <table id="calendar" , class="table table-bordered text-center table-sm">
     <thead class="thead-dark">
       <tr id="header">
         <th style="width: 5%">Time</th>
@@ -190,94 +148,95 @@
         <td></td>
         <td></td>
         <td></td>
-        <tr id="11:00">
-          <td>11:00</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr id="11:50">
-          <td>11:50</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr id="12:00">
-          <td>12:00</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr id="12:50">
-          <td>12:50</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr id="13:00">
-          <td>13:00</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr id="13:50">
-          <td>13:50</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr id="14:00">
-          <td>14:00</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr id="14:50">
-          <td>14:50</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr id="15:00">
-          <td>15:00</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr id="15:50">
-          <td>15.50</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr id="16:00">
-          <td>16:00</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      </tr>
+      <tr id="11:00">
+        <td>11:00</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr id="11:50">
+        <td>11:50</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr id="12:00">
+        <td>12:00</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr id="12:50">
+        <td>12:50</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr id="13:00">
+        <td>13:00</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr id="13:50">
+        <td>13:50</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr id="14:00">
+        <td>14:00</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr id="14:50">
+        <td>14:50</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr id="15:00">
+        <td>15:00</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr id="15:50">
+        <td>15.50</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr id="16:00">
+        <td>16:00</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

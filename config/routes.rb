@@ -35,4 +35,6 @@ Rails.application.routes.draw do
   get 'home', to: 'static_pages#home'
   get 'about', to: 'static_pages#about'
   get 'map', to: 'static_pages#map'
+  get 'login', to: 'static_pages#login'
+  get 'register', to: 'static_pages#register'
 end
