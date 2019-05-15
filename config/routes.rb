@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       delete 'remove_course'
     end
   end
-  
+
   get 'professors/(:id)/profile', to: 'professors#show', as: 'professor_profile'
   get 'professors/(:id)/calendar', to: 'professors#calendar', as: 'professor_calendar'
 
@@ -35,6 +35,4 @@ Rails.application.routes.draw do
   get 'home', to: 'static_pages#home'
   get 'about', to: 'static_pages#about'
   get 'map', to: 'static_pages#map'
-  get 'login', to: 'static_pages#login'
-  get 'register', to: 'static_pages#register'
 end

@@ -20,33 +20,45 @@
         <div class="collapse navbar-collapse" id="navCollapse">
           <ul class="navbar-nav ml-auto">
 
-            <li class="nav-link">
+            <li class="nav-item">
               <%= link_to 'Home', root_url, class: "nav-link"%>
             </li>
-          
+
+            <!-- DROPDOWN -->
             <%if pundit_user.is_a?(GuestUser) %>
-              <li class="nav-link">
-                <%= link_to  "Register", register_path, class: 'nav-link' %>
-              </li>
-              <li class='nav-link'>
-                <%= link_to  "Login", login_path, class: 'nav-link' %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
+                  Login
+                </a>
+
+                <div class="dropdown-menu" id="navbarDropdown">
+                  <%= link_to  "Student Login", new_student_session_path, class: 'dropdown-item' %>
+                  <%= link_to  "Professor Login", new_professor_session_path, class: 'dropdown-item' %>
+                  <%= link_to  "Admin Login", new_admin_session_path, class: 'dropdown-item' %>
+                </div>
               </li>
             <% end %>
 
-            <li class="nav-link">
+            <!-- DROPDOWN END -->
+
+            <li class="nav-item">
               <%= link_to 'About', about_path, class: "nav-link" %>
             </li>
-            <li class="nav-link">
+            <li class="nav-item">
               <%= link_to 'Map', map_path, class: "nav-link" %>
             </li>
+
+            <%if !pundit_user.is_a?(GuestUser) %>
+              <li class="nav-item">
+                <%= link_to  "Student Logout", destroy_student_session_path, method: :delete, class: 'nav-link' if current_student%>
+                <%= link_to  "Professor Logout", destroy_professor_session_path, method: :delete, class: 'nav-link' if current_professor%>
+                <%= link_to  "Admin Logout", destroy_admin_session_path, method: :delete, class: 'nav-link' if current_admin%>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
     </nav>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
     <!--
     <%if pundit_user.is_a?(GuestUser) %>
       <%=(link_to  "Register", new_student_registration_path) +
@@ -61,5 +73,9 @@
     <%=current_student.name if current_student%>
     -->
     <%= yield %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
   </body>
 </html>

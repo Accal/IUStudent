@@ -7,10 +7,4 @@ class StaticPagesController < ApplicationController
 
   def map
   end
-
-  def login
-  end
-  
-  def register
-  end
 end

@@ -1,34 +1,44 @@
-<h1>All courses</h1>
+<!-- JUMBOTRON -->
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Courses</h1>
+    <p class="lead">List of all the offered courses for this semester.</p>
 
-<p><%= link_to  "Create new course", new_course_path %> </p>
+    <%= form_tag(courses_path, method: :get, class: "input-group md-form") do %>
+      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Course name or code"%>
+      <%= submit_tag 'Search', name: nil, class: "btn btn-dark input-group-append"%>
+    <% end %>
+  </div>
+</div>
 
-<%= form_tag(courses_path, method: :get) do %>
-  <%= text_field_tag :search, params[:search]%>
-  <%= submit_tag 'Search' %>
-<% end %>
+<!-- ADMIN SECTION -->
+
+<div class="container mb-5">
+  <h4 class="mb-3">Import Courses</h4>
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_tag import_courses_path, multipart: true, class: "input-group" do %>
+        <div class="input-group-prepend">
+          <%= submit_tag "Import CSV", class: "btn btn-dark" %>
+        </div>
+        <div class="custom-file">
+          <%= label_tag :file, "Choose a CSV file", class: "custom-file-label"%>
+          <%= file_field_tag :file, class: "custom-file-input"%>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-2 ">
+      <%= button_to  "Create new course", new_course_path, method: :get, class: "btn btn-primary"%>
+    </div>
+    </div>
+  </div>
+</div>
 
 
-<% @courses.each do |course| %>
-  <p><%=course.code%></p>
-  <p><%= link_to course.name, course_path(course)%></p>
-  <p><%=course.instructor%></p>
-  <p><%=course.period1 unless course.period1.nil? %></p>
-  <p><%=course.period2 unless course.period2.nil?%></p>
-  <p><%=course.venue%></p>
-  <%= link_to  "Edit", edit_course_path(course)%>
-  <%= link_to  "Delete", course_path(course), method: :delete, data: {confirm: "Are you sure?"} %>
-
-  <%= link_to  "Add Course", add_course_student_path(current_student, course_code: "#{course.code}"), method: :post if student_signed_in? %>
-  <%= link_to  "Teach Course", add_course_professor_path(current_professor, course_code: "#{course.code}"), method: :post if professor_signed_in? %>
-
-<% end %>
-
-<hr>
-
-<div>
-<h3>Import a CSV File</h3>
-  <%= form_tag import_courses_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Import CSV", name: nil %>
-  <% end %>
+<!-- COURSE LIST -->
+<div class="container" style="max-width: 1600px">
+  <div class="row">
+  <%= render partial: 'course', collection: @courses %>
+  </div>
 </div>
