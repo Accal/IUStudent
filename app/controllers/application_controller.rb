@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   include Pundit
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   protect_from_forgery
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :faculty, :major, :semester])
+  end
 
   def pundit_user
     if !current_admin.nil?

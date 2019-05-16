@@ -2,80 +2,22 @@
 <html>
   <head>
     <title>IUStudent</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  
   <body>
-  <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark ">
-      <div class="container">
-        <a class="navbar-brand" href="#">IUStudent</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navCollapse">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <%= render 'shared/nav' %>
 
-        <div class="collapse navbar-collapse" id="navCollapse">
-          <ul class="navbar-nav ml-auto">
-
-            <li class="nav-item">
-              <%= link_to 'Home', root_url, class: "nav-link"%>
-            </li>
-
-            <!-- DROPDOWN -->
-            <%if pundit_user.is_a?(GuestUser) %>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
-                  Login
-                </a>
-
-                <div class="dropdown-menu" id="navbarDropdown">
-                  <%= link_to  "Student Login", new_student_session_path, class: 'dropdown-item' %>
-                  <%= link_to  "Professor Login", new_professor_session_path, class: 'dropdown-item' %>
-                  <%= link_to  "Admin Login", new_admin_session_path, class: 'dropdown-item' %>
-                </div>
-              </li>
-            <% end %>
-
-            <!-- DROPDOWN END -->
-
-            <li class="nav-item">
-              <%= link_to 'About', about_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Map', map_path, class: "nav-link" %>
-            </li>
-
-            <%if !pundit_user.is_a?(GuestUser) %>
-              <li class="nav-item">
-                <%= link_to  "Student Logout", destroy_student_session_path, method: :delete, class: 'nav-link' if current_student%>
-                <%= link_to  "Professor Logout", destroy_professor_session_path, method: :delete, class: 'nav-link' if current_professor%>
-                <%= link_to  "Admin Logout", destroy_admin_session_path, method: :delete, class: 'nav-link' if current_admin%>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!--
-    <%if pundit_user.is_a?(GuestUser) %>
-      <%=(link_to  "Register", new_student_registration_path) +
-      "<br>".html_safe +
-      (link_to  "Login", new_student_session_path) %>
-    <% else %>
-      <%= link_to  "Student Logout", destroy_student_session_path, method: :delete if current_student%>
-      <%= link_to  "Professor Logout", destroy_professor_session_path, method: :delete if current_professor%>
-      <%= link_to  "Admin Logout", destroy_admin_session_path, method: :delete if current_admin%>
-    <% end %>
-    <%=current_admin.name if current_admin%>
-    <%=current_student.name if current_student%>
-    -->
     <%= yield %>
-
+    
+    <!-- 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
+    -->
   </body>
 </html>

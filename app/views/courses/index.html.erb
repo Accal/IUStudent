@@ -5,8 +5,8 @@
     <p class="lead">List of all the offered courses for this semester.</p>
 
     <%= form_tag(courses_path, method: :get, class: "input-group md-form") do %>
-      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Course name or code"%>
-      <%= submit_tag 'Search', name: nil, class: "btn btn-dark input-group-append"%>
+      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Course name or code" %>
+      <%= submit_tag 'Search', name: nil, class: "btn btn-dark input-group-append" %>
     <% end %>
   </div>
 </div>
@@ -22,23 +22,23 @@
           <%= submit_tag "Import CSV", class: "btn btn-dark" %>
         </div>
         <div class="custom-file">
-          <%= label_tag :file, "Choose a CSV file", class: "custom-file-label"%>
-          <%= file_field_tag :file, class: "custom-file-input"%>
+          <%= label_tag :file, "Choose a CSV file", class: "custom-file-label" %>
+          <%= file_field_tag :file, class: "custom-file-input" %>
         </div>
       <% end %>
     </div>
 
     <div class="col-md-2 ">
-      <%= button_to  "Create new course", new_course_path, method: :get, class: "btn btn-primary"%>
-    </div>
+      <%= button_to "Create new course", new_course_path, method: :get, class: "btn btn-primary" %>
     </div>
   </div>
+</div>
 </div>
 
 
 <!-- COURSE LIST -->
 <div class="container" style="max-width: 1600px">
   <div class="row">
-  <%= render partial: 'course', collection: @courses %>
+    <%= render partial: 'course', collection: @courses %>
   </div>
 </div>

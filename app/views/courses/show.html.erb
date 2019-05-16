@@ -1,9 +1,111 @@
-<h1><%= @course.name %></h1>
+<!-- JUMBOTRON -->
+<div class="jumbotron jumbotron-fluid text-center">
+  <div class="container">
+    <h1 class="display-4"><%= @course.name %></h1>
+    <p class="lead"><%= @course.code %></p>
+  </div>
+</div>
 
-<p><%= @course.code %></p>
-<p><%=@course.instructor%></p>
-<p><%=@course.period1 unless @course.period1.nil? %></p>
-<p><%=@course.period2 unless @course.period2.nil?%></p>
-<p><%=@course.venue%></p>
-<%= link_to  "Edit", edit_course_path(@course)%>
-<%= link_to  "Delete", course_path(@course), method: :delete, data: {confirm: "Are you sure?"} %>
+<!-- COURSE INFORMATION -->
+<div id="course-information" class="container">
+  <div class="row">
+    <div class="col-lg-6 mb-5">
+      <div class="container">
+        <h4 class="mb-4"><%=@course.instructor%></h4>
+        <h4 class="mb-4"><%=@course.period1 unless @course.period1.nil? %></h4>
+        <h4 class="mb-4"><%=@course.period2 unless @course.period2.nil?%></h4>
+        <h4 class="mb-4"><%=@course.venue%></h4>
+        <img src="https://via.placeholder.com/400x300.png?text=Course+Location" class="d-block my-5 img-fluid" alt="...">
+        <%= link_to  "Edit", edit_course_path(@course), class: "btn btn-primary"%>
+        <%= link_to  "Delete", course_path(@course), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div id="course-calendar" class="container d-none d-lg-block">
+        <%= render '/shared/table' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPT -->
+
+<script type="text/javascript">
+  $(document).ready(populateTable);
+  
+  function populateTable() {
+    var table = $("#calendar");
+    var rows = $('tr', table.get(0));
+  
+    // Takes input from students controller and passes it as an array to a js variable
+    var course =  <%= raw @formatted_course.to_json %>;
+
+      // Assign variables
+      var course_name = course[0];
+      var day1 = course[1];
+      var start_time1 = course[2];
+      var end_time1 = course[3];
+      var day2 = course[4];
+      var start_time2 = course[5];
+      var end_time2 = course[6];
+      var row;
+      var current_id = "";
+  
+      // Test Code
+      if (start_time1 != ""){
+        row = document.getElementById(start_time1)
+        current_id = row.id;
+  
+        while (current_id != end_time1){
+          current_id = row.id;
+          row.cells[day_index(day1)].innerHTML = course_name;
+          row.cells[day_index(day1)].style.backgroundColor = "#e3f2fd";
+          row = rows.eq(row.rowIndex + 1).get(0);
+        }
+      }
+  
+      if (start_time2 != ""){
+        row = document.getElementById(start_time2)
+        current_id = row.id;
+  
+        while (current_id != end_time2){
+          current_id = row.id;
+          row.cells[day_index(day2)].innerHTML = course_name;
+          row.cells[day_index(day2)].style.backgroundColor = "#e3f2fd";
+          row = rows.eq(row.rowIndex + 1).get(0);
+        }
+      }
+  
+    MergeCommonRows(table);
+  }
+  
+  // Find index of a column head for a specific day
+  function day_index(day){
+    return $("#" + day).index();
+  }
+  
+  function MergeCommonRows(table) {
+      var firstColumnBrakes = [];
+      // iterate through the columns instead of passing each column as function parameter:
+      for(var i=1; i<=table.find('th').length; i++){
+          var previous = null, cellToExtend = null, rowspan = 1;
+          table.find("td:nth-child(" + i + ")").each(function(index, e){
+              var jthis = $(this), content = jthis.text();
+              // check if current row "break" exist in the array. If not, then extend rowspan:
+              if (previous == content && content !== "") {
+                  // hide the row instead of remove(), so the DOM index won't "move" inside loop.
+                  jthis.addClass('hidden');
+                  cellToExtend.attr("rowspan", (rowspan = rowspan+1));
+              }else{
+                  // store row breaks only for the first column:
+                  if(i === 1) firstColumnBrakes.push(index);
+                  rowspan = 1;
+                  previous = content;
+                  cellToExtend = jthis;
+              }
+          });
+      }
+      // now remove hidden td's (or leave them hidden if you wish):
+      $('td.hidden').remove();
+  }
+</script>

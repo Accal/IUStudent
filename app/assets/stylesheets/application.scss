@@ -1,20 +1,11 @@
-// Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
-/*
-table {
-  table-layout: fixed;
-}
-
-th,
-td {
-  width: 100px;
-  overflow: hidden;
+html,
+body {
+  height: 100%;
 }
 
 
-th:first-child{
-  width: 30px; 
-  overflow: hidden
+.centered {
+  height: calc(100% - 156px);
 }
-*/

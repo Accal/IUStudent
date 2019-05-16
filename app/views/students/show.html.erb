@@ -10,3 +10,4 @@
   <p><%=course.venue%></p>
   <%= link_to  "Remove Course", remove_course_student_path(current_student, course_code: "#{course.code}"), method: :delete if student_signed_in? %>
 <% end %>
+

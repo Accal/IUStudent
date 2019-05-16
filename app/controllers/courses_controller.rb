@@ -42,6 +42,16 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @page_title = @course.name
+
+    @formatted_course = Array.new
+    @formatted_course.push(@course.name)
+    @formatted_course.push(@course.day1)
+    @formatted_course.push(@course.time1_start)
+    @formatted_course.push(@course.time1_end)
+
+    @formatted_course.push(@course.day2)
+    @formatted_course.push(@course.time2_start)
+    @formatted_course.push(@course.time2_end)
   end
 
   def destroy

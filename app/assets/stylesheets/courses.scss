@@ -1,1 +1,13 @@
 @import "bootstrap";
+
+#course-calendar tr {
+  line-height: 20px;
+  min-height: 20px;
+  height: 20px;
+}
+
+@media (min-width: 1200px) {
+  #course-information {
+    min-width: 1300px;
+  }
+}
