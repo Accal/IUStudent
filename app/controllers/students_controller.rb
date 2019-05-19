@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+  layout 'student'
+
   def add_course
     @student = current_student
     @student.add_course(params[:course_code])

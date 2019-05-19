@@ -1,3 +1,49 @@
+<div id="accordion" class="container centered d-flex">
+  <div class="flex-column m-auto">
+    <div class="card card-responsive text-center">
+      <div id="headingOne" class="card-header bg-dark text-center" >
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <h3>Student Information</h3>
+        </button>
+      </div>
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 my-3">
+              <p><strong> Student Name: </strong> <%= @student.name%></p>
+              <img src="https://via.placeholder.com/300x400.png?text=Student+Picture" class="my-3 img-fluid" alt="Student Picture">
+            </div>
+            <div class="col-md-6 my-3">
+                <p><strong> Email: </strong> <%= @student.email %></p>
+                <p> <strong> Faculty: </strong> <%= @student.faculty %> </p>
+                <p> <strong> Major: </strong> <%= @student.major %> </p>
+                <p class="">  <strong> Semester: </strong> <%= @student.semester %> </p>
+                <div class="d-flex mt-5 w-100 justify-content-center">
+                  <%= button_to "Update Information", edit_student_registration_path(@student), method: :get, class: "btn btn-primary mx-2"%>
+                  <%= button_to "Calendar", student_calendar_path(@student), method: :get, class: "btn btn-primary mx-2"%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card card-responsive">
+      <div id="headingTwo" class="card-header bg-dark text-center" >
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <h3>Followed Courses</h3>
+        </button>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+          <div class="row">
+            <%= render partial: 'course', collection: @student.courses %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 
 <%= @student.name %>
 
 <% @student.courses.each do |course| %>
@@ -10,4 +56,4 @@
   <p><%=course.venue%></p>
   <%= link_to  "Remove Course", remove_course_student_path(current_student, course_code: "#{course.code}"), method: :delete if student_signed_in? %>
 <% end %>
-
+-->

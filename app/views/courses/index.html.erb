@@ -3,16 +3,16 @@
   <div class="container">
     <h1 class="display-4">Courses</h1>
     <p class="lead">List of all the offered courses for this semester.</p>
+  
 
     <%= form_tag(courses_path, method: :get, class: "input-group md-form") do %>
       <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Course name or code" %>
-      <%= submit_tag 'Search', name: nil, class: "btn btn-dark input-group-append" %>
+      <%= submit_tag 'Search', name: nil, class: "btn btn-primary input-group-append" %>
     <% end %>
   </div>
 </div>
 
 <!-- ADMIN SECTION -->
-
 <div class="container mb-5">
   <h4 class="mb-3">Import Courses</h4>
   <div class="row">

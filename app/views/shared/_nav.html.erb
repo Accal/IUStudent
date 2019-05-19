@@ -1,7 +1,7 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark ">
   <div class="container">
-    <a class="navbar-brand" href="#">IUStudent</a>
+    <%= link_to "IUStudent", home_path, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navCollapse">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -38,6 +38,18 @@
             <%= link_to  "Student Logout", destroy_student_session_path, method: :delete, class: 'nav-link' if current_student%>
             <%= link_to  "Professor Logout", destroy_professor_session_path, method: :delete, class: 'nav-link' if current_professor%>
             <%= link_to  "Admin Logout", destroy_admin_session_path, method: :delete, class: 'nav-link' if current_admin%>
+          </li>
+        <% end %>
+
+        <%if pundit_user.is_a?(Student) %>
+          <li class="nav-item">
+            <%= link_to  "Profile", student_profile_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+
+        <%if pundit_user.is_a?(Professor) %>
+          <li class="nav-item">
+            <%= link_to  "Profile", professor_profile_path, class: 'nav-link' %>
           </li>
         <% end %>
       </ul>

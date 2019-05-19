@@ -1,11 +1,15 @@
 class ApplicationController < ActionController::Base
   include Pundit
-  before_action :configure_permitted_parameters, if: :devise_controller?
-
   protect_from_forgery
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :faculty, :major, :semester])
+  layout :layout_by_resource
+
+  def layout_by_resource
+    if devise_controller?
+      "devise"
+    else
+      "application"
+    end
   end
 
   def pundit_user
@@ -27,5 +31,17 @@ class ApplicationController < ActionController::Base
     guest.last_name = "User"
     guest.email = "guest@example.com"
     guest
+  end
+
+  protected
+
+  def devise_parameter_sanitizer
+    if resource_class == Student
+      Student::ParameterSanitizer.new(Student, :student, params)
+    elsif resource_class == Professor
+      Professor::ParameterSanitizer.new(Professor, :professor, params)
+    else
+      super # Use the default one
+    end
   end
 end

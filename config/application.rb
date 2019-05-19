@@ -27,6 +27,15 @@ module IUStudent
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    config.to_prepare do
+      # Load stuff not inside models, views, controllers
+     [ "../app/sanitizers/*.rb" ].each do |x|
+       Dir.glob(File.join(File.dirname(__FILE__), x)) do |c|
+         Rails.configuration.cache_classes ? require(c) : load(c)
+       end
+     end 
+    end  
+
     # Don't generate system test files.
     config.generators.system_tests = nil
   end
