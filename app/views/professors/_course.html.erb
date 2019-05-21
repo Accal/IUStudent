@@ -1,0 +1,28 @@
+<div class="col-xl-4 col-lg-6">
+  <div class="card text-center mx-auto mb-4", style="width: 20rem; min-height: 18rem">
+    <div class="card-body">
+      <h4 class="card-title">
+        <%= link_to course.name, course_path(course)%>
+      </h4>
+
+      <h6 class="card-subtitle mb-2 text-muted">
+        <%=course.code%>, <%=course.instructor%>
+      </h6>
+
+      <p class="card-text">
+        <%=course.period1 unless course.period1.nil? %>
+      </p>
+
+      <p class="card-text">
+        <%=course.period2 unless course.period2.nil?%>
+      </p>
+
+      <p class="card-text">
+        <%=course.venue%>
+      </p>
+
+      <%= button_to  "Remove Course", remove_course_professor_path(current_professor, course_code: "#{course.code}"), method: :delete %>
+
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'courses#index'
+  root to: 'static_pages#home'
 
   devise_for :admins
   devise_for :professors

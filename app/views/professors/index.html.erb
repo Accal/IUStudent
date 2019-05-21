@@ -1,22 +1,21 @@
-<h1>Professors</h1>
-
-<% @professors.each do |professor| %>
-  <p><%= link_to professor.name, professor_profile_path(professor)%></p>
-  <p><%=professor.faculty%></p>
-  <p><%=professor.position%></p>
-  <p><%=professor.office%></p>
-  <p><%=professor.phoneNumber%></p>
-<% end %>
-
-<hr>
-
-<div>
-
-<!--
-<h3>Import a CSV File</h3>
-  <%= form_tag import_courses_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Import CSV", name: nil %>
-  <% end %>
+<!-- JUMBOTRON -->
+<div id="course-jumbotron" class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Professors</h1>
+    <p class="lead">Search by a professor's name</p>
+    
+    <%= form_tag(professors_path, method: :get, class: "input-group md-form") do %>
+      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Professor name" %>
+      <%= submit_tag 'Search', name: nil, class: "btn btn-primary input-group-append" %>
+    <% end %>
+  </div>
 </div>
- -->
+<!-- JUMBOTRON END -->
+
+<div class="row mx-0">
+  <div class="col">
+    <div class="container">
+      <%=  render partial: 'professor', collection: @professors %>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,45 @@
-<%= @professor.name %>
-
-<% @professor.courses.each do |course| %>
-  <hr>
-  <p><%=course.code%></p>
-  <p><%= link_to course.name, course_path(course)%></p>
-  <p><%=course.instructor%></p>
-  <p><%=course.period1 unless course.period1.nil? %></p>
-  <p><%=course.period2 unless course.period2.nil?%></p>
-  <p><%=course.venue%></p>
-  <%= link_to  "Remove Course", remove_course_professor_path(current_professor, course_code: "#{course.code}"), method: :delete if professor_signed_in? %>
-<% end %>
+<div id="accordion" class="container centered d-flex">
+  <div class="flex-column m-auto">
+    <div class="card card-responsive text-center">
+      <div id="headingOne" class="card-header bg-dark text-center" >
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <h3>Professor Information</h3>
+        </button>
+      </div>
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 my-3">
+              <p><strong> Professor Name: </strong> <%= @professor.name%></p>
+              <img src="https://via.placeholder.com/300x400.png?text=Professor+Picture" class="my-3 img-fluid" alt="Professor Picture">
+            </div>
+            <div class="col-md-6 my-3">
+                <p><strong> Faculty: </strong> <%= @professor.faculty %></p>
+                <p> <strong> Position: </strong> <%= @professor.position %> </p>
+                <p> <strong> Office: </strong> <%= @professor.office %> </p>
+                <p> <strong> Phone Number: </strong> <%= @professor.phoneNumber %> </p>                
+                <div class="d-flex mt-5 w-100 justify-content-center">
+                  <%= button_to "Update Information", edit_professor_registration_path(@professor), method: :get, class: "btn btn-primary mx-2"%>
+                  <%= button_to "Calendar", professor_calendar_path(@professor), method: :get, class: "btn btn-primary mx-2"%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card card-responsive">
+      <div id="headingTwo" class="card-header bg-dark text-center" >
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <h3>Taught Courses</h3>
+        </button>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+          <div class="row">
+            <%= render partial: 'course', collection: @professor.courses %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,14 +1,19 @@
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-md navbar-dark bg-dark ">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <div class="container">
-    <%= link_to "IUStudent", home_path, class: "navbar-brand" %>
+
+    <a href="/home" class="navbar-brand">
+      <%= fa_icon "graduation-cap"%>
+      IUStudent
+    </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navCollapse">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navCollapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to 'Home', root_url, class: "nav-link"%>
+          <%= link_to 'Home', home_path, class: "nav-link"%>
         </li>
         <li class="nav-item">
           <%= link_to 'Courses', courses_path, class: "nav-link"%>

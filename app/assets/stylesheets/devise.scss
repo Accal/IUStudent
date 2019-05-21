@@ -1,27 +1,52 @@
 $primary: #3292a6;
 
 @import "bootstrap";
+@import "font-awesome";
+
 
 html,
 body {
   height: 100%;
 }
 
+.navbar {
+  opacity: 0.8;
+  border-bottom: #3292a6 3px solid;
+
+  .dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.6);
+
+    .dropdown-item:hover {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    
+    a {
+      color: white;
+    }
+
+    a:hover {
+      color: $primary;
+    }
+     
+  }
+}
+
+
 #content {
   background: image-url('background.jpg') no-repeat;
-  height: calc(100% - 56px);
+  height:  100%;
   background-size: cover;
   background-attachment: fixed;
 }
 
 #content .dark-overlay {
-  margin-top: 56px;
-  height: calc(100% - 56px);
+
+  height: 100%;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .centered {

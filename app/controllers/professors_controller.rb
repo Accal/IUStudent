@@ -1,6 +1,8 @@
 class ProfessorsController < ApplicationController
+  layout 'student'
+
   def index
-    @professors = Professor.all
+    @professors = Professor.search(params[:search])
   end
 
   def show
@@ -14,7 +16,7 @@ class ProfessorsController < ApplicationController
   def add_course
     @professor = current_professor
     @professor.add_course(params[:course_code])
-    redirect_to root_url, notice: "Course Added."
+    redirect_to professor_profile_url, notice: "Course Removed."
     authorize @professor
   end
 

@@ -1,0 +1,30 @@
+<div class="card text-center m-auto">
+  <div class="card-body">
+    <h4 class="card-title">
+      <p><%= link_to professor.name, professor_profile_path(professor)%></p>
+    </h4>
+
+    <div class="row">
+      <div class="col-md-6">
+        <img src="https://via.placeholder.com/100x200.png?text=Professor+Picture" class="my-3 img-fluid" alt="Professor Picture">
+      </div>
+      <div class="col-md-6">
+        <p class="card-text">
+          <%=professor.faculty%>
+        </p>
+
+        <p class="card-text">
+          <%=professor.position%>
+        </p>
+
+        <p class="card-text">
+          <%=professor.office%>
+        </p>
+
+        <p class="card-text">
+          <%=professor.phoneNumber%>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

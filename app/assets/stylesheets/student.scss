@@ -1,10 +1,38 @@
 $primary: #3292a6;
 
 @import "bootstrap";
+@import "font-awesome";
+
 
 html,
 body {
   height: 100%;
+}
+
+.navbar {
+  opacity: 0.8;
+  border-bottom: #3292a6 3px solid;
+
+  .dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.6);
+
+    .dropdown-item:hover {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    
+    a {
+      color: white;
+    }
+
+    a:hover {
+      color: $primary;
+    }
+     
+  }
+}
+
+.jumbotron {
+  margin-top: 56px;
 }
 
 .card {

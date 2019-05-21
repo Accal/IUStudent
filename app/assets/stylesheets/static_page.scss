@@ -1,0 +1,121 @@
+$primary: #3292a6;
+
+@import "bootstrap";
+@import "font-awesome";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #333;
+  color: #fff;
+}
+
+.navbar {
+  opacity: 0.8;
+  border-bottom: #3292a6 3px solid;
+
+  .dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.6);
+
+    .dropdown-item:hover {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    
+    a {
+      color: white;
+    }
+
+    a:hover {
+      color: $primary;
+    }
+     
+  }
+}
+
+#content {
+  background: image-url('background.jpg') no-repeat;
+  height: 100%;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#content .dark-overlay {
+
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#home-showcase {
+  background-color: rgba(0, 0, 0, 0.4);
+
+  .card  {
+
+    border: none;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0);
+
+
+    a {
+      color: #3292a6;
+    }
+    
+    .form-control  {
+      background: rgba(255, 255, 255, 0.4)
+    }
+  }
+
+  .fa-check {
+    background-color: #3292a6;
+    color: #fff;
+  }
+}
+
+.jumbotron {
+  margin-top: 56px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#student-showcase {
+  padding-top: 74px;
+  padding-bottom: 74px;
+  background-color: rgba(0, 0, 0, 0.2);
+
+
+  .fa-check {
+    background-color: #fff;
+    color:#3292a6;
+  }
+}
+
+
+#professor-jumbotron {
+  background-color: rgba(20, 57, 65, 0.4);
+}
+
+#professor-section {
+  background: image-url('professors.jpg') no-repeat;
+  min-height:  800px;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#professor-showcase{
+  padding-top: 74px;
+  padding-bottom: 74px;
+}
+
+.professor-overlay {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+

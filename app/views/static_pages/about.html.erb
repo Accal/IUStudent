@@ -1,2 +1,165 @@
-<h1>StaticPages#about</h1>
-<p>Find me in app/views/static_pages/about.html.erb</p>
+<section class="student-section">
+  <!-- JUMBOTRON -->
+  <div class="jumbotron jumbotron-fluid text-center p-4 mb-0">
+    <div class="container">
+      <h1 class="display-2">Student</h1>
+      <p class="lead">Please select the relevant section if you want to know more</p>
+      <div class="d-flex justify-content-center mt-5">
+        <a href="#student-section" class="btn btn-outline-primary mx-3">Student Section</a>
+        <a href="#professor-section" class="btn btn-outline-primary mx-3">Professor Section</a>
+        <a href="#admin-section" class="btn btn-outline-primary mx-3">Admin Section</a>
+      </div>
+    </div>
+  </div>
+  <!-- JUMBOTRON END -->
+  <div id="student-showcase" class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col text-center">
+          <div class="d-flex mx-5">
+            <div class="p-4 align-self-start">
+              <%= fa_icon "check 2x" %>
+            </div>
+            <div class="p-4 align-self-end">
+              <p class="lead">Find the relevant courses and add them to your profile</p>
+            </div>
+          </div>
+          <div class="d-flex mx-5">
+            <div class="p-4 align-self-start">
+              <%= fa_icon "check 2x" %>
+            </div>
+            <div class="p-4 align-self-end">
+              <p class="lead">Get an overview of every course you have added</p>
+            </div>
+          </div>
+          <div class="d-flex mx-5">
+            <div class="p-4 align-self-start">
+              <%= fa_icon "check 2x" %>
+            </div>
+            <div class="p-4 align-self-end">
+              <p class="lead">Get a calendar with all of your courses</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col text-center">
+          <div class="d-flex mx-5">
+            <div class="p-4 align-self-start">
+              <%= fa_icon "check 2x" %>
+            </div>
+            <div class="p-4 align-self-end">
+              <p class="lead">Check professor profiles and thier schedules</p>
+            </div>
+          </div>
+          <div class="d-flex mx-5">
+            <div class="p-4 align-self-start">
+              <%= fa_icon "check 2x" %>
+            </div>
+            <div class="p-4 align-self-end">
+              <p class="lead">Get all the information about any course</p>
+            </div>
+          </div>
+          <div class="d-flex mx-5">
+            <div class="p-4 align-self-start">
+              <%= fa_icon "check 2x" %>
+            </div>
+            <div class="p-4 align-self-end">
+              <p class="lead">See course times in a calendar</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="d-flex justify-content-center mt-4">
+            <%= link_to 'Student Login', new_student_session_path, class: "btn btn-outline-primary mx-5"%>
+            <%= link_to 'Student Sign Up', new_student_registration_path, class: "btn btn-outline-primary mx-5"%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="professor-section">
+  <div class="professor-overlay">
+    <!-- JUMBOTRON -->
+    <div id="professor-jumbotron" class="jumbotron jumbotron-fluid text-center p-4 mt-0 mb-0">
+      <div class="container">
+        <h1 class="display-2">Professor</h1>
+        <p class="lead">Please select the relevant section if you want to know more</p>
+        <div class="d-flex justify-content-center mt-5">
+          <a href="#student-section" class="btn btn-outline-primary mx-3">Student Section</a>
+          <a href="#professor-section" class="btn btn-outline-primary mx-3">Professor Section</a>
+          <a href="#admin-section" class="btn btn-outline-primary mx-3">Admin Section</a>
+        </div>
+        </div>
+    </div>
+    <!-- JUMBOTRON END -->
+    <div id="professor-showcase" class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <div class="d-flex mx-5">
+              <div class="p-4 align-self-start">
+                <%= fa_icon "check 2x" %>
+              </div>
+              <div class="p-4 align-self-end">
+                <p class="lead">Find the relevant courses and add them to your profile</p>
+              </div>
+            </div>
+            <div class="d-flex mx-5">
+              <div class="p-4 align-self-start">
+                <%= fa_icon "check 2x" %>
+              </div>
+              <div class="p-4 align-self-end">
+                <p class="lead">Get an overview of every course you have added</p>
+              </div>
+            </div>
+            <div class="d-flex mx-5">
+              <div class="p-4 align-self-start">
+                <%= fa_icon "check 2x" %>
+              </div>
+              <div class="p-4 align-self-end">
+                <p class="lead">Get a calendar with all of your courses</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 text-center">
+            <div class="d-flex mx-5">
+              <div class="p-4 align-self-start">
+                <%= fa_icon "check 2x" %>
+              </div>
+              <div class="p-4 align-self-end">
+                <p class="lead">Check professor profiles and thier schedules</p>
+              </div>
+            </div>
+            <div class="d-flex mx-5">
+              <div class="p-4 align-self-start">
+                <%= fa_icon "check 2x" %>
+              </div>
+              <div class="p-4 align-self-end">
+                <p class="lead">Get all the information about any course</p>
+              </div>
+            </div>
+            <div class="d-flex mx-5">
+              <div class="p-4 align-self-start">
+                <%= fa_icon "check 2x" %>
+              </div>
+              <div class="p-4 align-self-end">
+                <p class="lead">See course times in a calendar</p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-12">
+            <div class="d-flex justify-content-center mt-4">
+              <%= link_to 'Professor Login', new_professor_session_path, class: "btn btn-outline-primary mx-5"%>
+              <%= link_to 'Professor Sign Up', new_professor_registration_path, class: "btn btn-outline-primary mx-5"%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

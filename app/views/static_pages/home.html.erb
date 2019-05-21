@@ -1,2 +1,71 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="d-flex h-100 align-items-center">
+  <div id="home-showcase" class="container">
+    <div class="row">
+      <div class="col-lg-7 d-none d-lg-block ">
+        <h1 class="display-4 mt-5 mx-4">Welcome to IUStudent</h1>
+        <div class="d-flex mx-5">
+          <div class="p-4 align-self-start">
+            <%= fa_icon "check 2x" %>
+          </div>
+          <div class="p-4 align-self-end">
+            <p class="lead">Find the relevant courses and add them to your profile</p>
+          </div>
+        </div>
+        <div class="d-flex mx-5">
+          <div class="p-4 align-self-start">
+            <%= fa_icon "check 2x" %>
+          </div>
+          <div class="p-4 align-self-end">
+            <p class="lead">Get an overview of every course you have added</p>
+          </div>
+        </div>
+        <div class="d-flex mx-5">
+          <div class="p-4 align-self-start">
+            <%= fa_icon "check 2x" %>
+          </div>
+          <div class="p-4 align-self-end">
+            <p class="lead">Get a calendar with all of your courses</p>
+          </div>
+        </div>
+
+        <div class="d-flex mx-5">
+          <div class="p-4 align-self-start">
+            <%= button_to 'Read More', about_path, method: :get, class: "btn btn-outline-primary" %>
+          </div>
+          <div class="p-4 align-self-end">
+            <%= button_to 'Professor Sign Up', new_professor_session_path, method: :get, class: "btn btn-outline-primary" %>
+          </div>
+        </div>
+
+      </div>
+      
+      <div class="col-lg-5 col text-center">
+        <div class="card my-5">
+          <div class="card-body">
+            <h1 class="card-title">Student Sign In</h1>
+            <%= form_for(:student, :url => session_path(:student)) do |f| %>
+              <div class="form-group">
+                <%= f.label :email %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+              </div>
+              <div class="form-group">
+                <%= f.label :password %>
+                <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+              </div>
+              <div class="form-check">
+                <%= f.check_box :remember_me, class: "form-check-input" %>
+                <%= f.label :remember_me, class: "form-check-label"%>
+              </div>
+              <div class="actions">
+                <%= f.submit "Log in", class: "btn btn-block btn-primary my-2" %>
+              </div>
+              <div class="form-group text-center">
+                <small id="passwordHelpInline" >
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
